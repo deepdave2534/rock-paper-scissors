@@ -38,7 +38,15 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-playRound(humChoice, compChoice);
+for(let i = 0; i < 5; i++) {
+    playRound(humChoice, compChoice);
 
-console.log(humanScore);
-console.log(computerScore);
+    humChoice = getHumanChoice();
+    compChoice = getComputerChoice();
+
+    console.log(compChoice);
+    console.log("You chose:", humChoice);
+}
+
+console.log("Human Score:", humanScore);
+console.log("Computer Score:", computerScore);
