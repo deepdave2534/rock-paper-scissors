@@ -2,20 +2,10 @@ function getComputerChoice() {
     return Math.floor(Math.random() * 3) + 1;
 }
 
-let compChoice = 0
-
-compChoice = getComputerChoice();
-
-console.log(compChoice)
-
 function getHumanChoice() {
     let choice = prompt("Enter rock, paper, or scissors:").toLowerCase();
     return choice;
 }
-
-let humChoice = getHumanChoice();
-
-console.log("You chose:", humChoice);
 
 // 1 => rock  2 => paper  3 => scissors
 
@@ -39,10 +29,10 @@ function playRound(humanChoice, computerChoice) {
 }
 
 for(let i = 0; i < 5; i++) {
+    let humChoice = getHumanChoice();
+    let compChoice = getComputerChoice();
+    
     playRound(humChoice, compChoice);
-
-    humChoice = getHumanChoice();
-    compChoice = getComputerChoice();
 
     console.log(compChoice);
     console.log("You chose:", humChoice);
@@ -50,3 +40,13 @@ for(let i = 0; i < 5; i++) {
 
 console.log("Human Score:", humanScore);
 console.log("Computer Score:", computerScore);
+
+if(humanScore > computerScore) {
+    console.log("Computer Wins!!!");
+}
+else if(humanScore == computerScore) {
+    console.log("Tie!!!");
+}
+else {
+    console.log("Human Wins!!!");
+}
