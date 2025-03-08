@@ -3,3 +3,11 @@ function getComputerChoice() {
 }
 
 console.log(getComputerChoice())
+
+function getHumanChoice() {
+    let choice = prompt("Enter rock, paper, or scissors:").toLowerCase();
+    return choice;
+}
+
+// Test the function
+console.log("You chose:", getHumanChoice());
