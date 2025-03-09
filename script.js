@@ -1,11 +1,11 @@
 let humanScore = 0;
 let computerScore = 0;
+let rounds = 0;
+const maxRounds = 5;
 
 function getComputerChoice() {
     return Math.floor(Math.random() * 3) + 1;
 }
-
-let rounds = 0;
 
 function declareWinner() {
     let finalResult = "";
@@ -17,11 +17,15 @@ function declareWinner() {
         finalResult = "It's a tie!";
     }
     document.getElementById("final-result").textContent = finalResult;
+
+    // Disable buttons after game ends
+    document.querySelectorAll("button").forEach(button => button.disabled = true);
 }
 
 function playRound(humanChoice) {
+    if (rounds >= maxRounds) return; // Stop the game after 5 rounds
+
     let computerChoice = getComputerChoice();
-    
     let resultText = "";
 
     if (humanChoice === computerChoice) {
@@ -40,14 +44,15 @@ function playRound(humanChoice) {
         computerScore++;
     }
 
-    // Update scores and result message
-    document.getElementById("human-score").textContent = humanScore;
-    document.getElementById("computer-score").textContent = computerScore;
-    document.getElementById("result").textContent = resultText;
-
     rounds++;
 
-    if(rounds == 4) {
+    // Update UI elements
+    document.getElementById("human-score").textContent = humanScore;
+    document.getElementById("computer-score").textContent = computerScore;
+    document.getElementById("round-count").textContent = rounds;
+    document.getElementById("result").textContent = resultText;
+
+    if (rounds === maxRounds) {
         declareWinner();
     }
 }
