@@ -9,21 +9,23 @@ function getComputerChoice() {
 
 function declareWinner() {
     let finalResult = "";
+
     if (humanScore > computerScore) {
         finalResult = "You win the game!";
-    } else if (humanScore < computerScore) {
+    } 
+    else if (humanScore < computerScore) {
         finalResult = "Computer wins the game!";
-    } else {
+    } 
+    else {
         finalResult = "It's a tie!";
     }
     document.getElementById("final-result").textContent = finalResult;
 
-    // Disable buttons after game ends
     document.querySelectorAll("button").forEach(button => button.disabled = true);
 }
 
 function playRound(humanChoice) {
-    if (rounds >= maxRounds) return; // Stop the game after 5 rounds
+    if (rounds >= maxRounds) return;
 
     let computerChoice = getComputerChoice();
     let resultText = "";
@@ -31,11 +33,8 @@ function playRound(humanChoice) {
     if (humanChoice === computerChoice) {
         resultText = "It's a tie!";
     } 
-    else if (
-        (humanChoice === 1 && computerChoice === 3) || 
-        (humanChoice === 2 && computerChoice === 1) || 
-        (humanChoice === 3 && computerChoice === 2)
-    ) {
+    else if ((humanChoice === 1 && computerChoice === 3) || (humanChoice === 2 && computerChoice === 1) || 
+            (humanChoice === 3 && computerChoice === 2)) {
         resultText = "You win this round!";
         humanScore++;
     } 
@@ -46,7 +45,6 @@ function playRound(humanChoice) {
 
     rounds++;
 
-    // Update UI elements
     document.getElementById("human-score").textContent = humanScore;
     document.getElementById("computer-score").textContent = computerScore;
     document.getElementById("round-count").textContent = rounds;
